@@ -1,0 +1,9 @@
+canvas{
+    border: 1px solid black;
+    resize: both;
+    overflow: auto;
+}
+
+body{
+    margin: 0;
+}
