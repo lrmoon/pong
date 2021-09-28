@@ -19,7 +19,7 @@ const player1 = {
 }
 
 const player2 = {
-    xPos: 1000,
+    xPos: 1470,
     yPos: 390,
     height: 35,
     width: 130,
@@ -72,7 +72,8 @@ function render(){
     
 
     c.font = '30px Arial';
-    c.fillText('pong', xCenter, 30);
+    c.fillText(`Score: ${player1.score}`  , 50, 30);
+    c.fillText(`Score: ${player2.score}`, 1390, 30);
 }
 
 
@@ -92,20 +93,22 @@ function movePaddle(e){
     switch(e.keyCode) {
         case 38: //arrow up
            
-            player2.posY -= 40;
-            console.log('stuffup');
+            player2.yPos -= 40;
+            if(player1.yPos === innerHeight){
+                break;
+            }
              //move up
             break;
         case 40: //arrow down
-            player2.posY += 40;
+            player2.yPos += 40;
             console.log('stuffdown');//move down
             break;
         case 87: //w key
-            player1.posY -= 40;
+            player1.yPos -= 40;
             console.log('stuffupw');//move up
             break;
         case 83: // s key
-            player1.posY += 40;
+            player1.yPos += 40;
             console.log('stuffdowns')//move down
             break;
     }
@@ -116,82 +119,54 @@ function movePaddle(e){
     
 }
 
-// function animate(){
-//     requestAnimationFrame(animate);
-//     c.clearRect(0, 0 , innerWidth, innerHeight);
+function animate(){
+    requestAnimationFrame(animate);
+    c.clearRect(0, 0 , innerWidth, innerHeight);
 
-//     c.beginPath();
-//     c.arc(ball.xPos, ball.yPos,30, 0, Math.PI * 2,false);
-//     c.fillStyle = 'black';
-//     c.stroke();
-
-   
-//     if(ball.xPos + ball.radius > innerWidth || ball.xPos - ball.radius < 0){
-//         ball.dx = -ball.dx;
-//     }
-    
-//     if(ball.yPos + ball.radius > innerHeight  || ball.yPos - ball.radius < 0){
-//         ball.dy = -ball.dy;
-//     }
-
-//     ball.xPos += ball.dx;
-//     ball.yPos += ball.dy;
-
-//     player1input();
-//     render();
-
-// }
-
-// animate();
-
-function DrawBall(x,y,dx,dy){
-this.x = ball.xPos;
-this.y = ball.yPos;
-this.dx = dx;
-this.dy = dy;
-
-this.draw = function(){
     c.beginPath();
-    c.arc(this.x, this.y,30, 0, Math.PI * 2,false);
+    c.arc(ball.xPos, ball.yPos,30, 0, Math.PI * 2,false);
     c.fillStyle = 'black';
     c.stroke();
-}
 
-this.move = function(){
-    if(this.x + ball.radius > innerWidth || this.x - ball.radius < 0){
-        this.dx = -this.dx;
-    }
-    
-    if(this.y + ball.radius > innerHeight  || this.y - ball.radius < 0){
-        this.dy = -this.dy;
-    }
-
-    this.x += this.dx;
-    this.y += this.dy;
-
-    player1input();
-    render();
-}
-
-
-}
-var ball2 = new DrawBall(200,200);
-
-function drawRectagle(){
-    
-}
-function ballCollision(){
    
+    if(ball.xPos + ball.radius > innerWidth || ball.xPos - ball.radius < 0){
+        ball.dx = -ball.dx;
+    }
+    
+    if(ball.yPos + ball.radius > innerHeight  || ball.yPos - ball.radius < 0){
+        ball.dy = -ball.dy;
+    }
+
+    ballCollision();
+    
+    ball.xPos += ball.dx;
+    ball.yPos += ball.dy;
+
+    //player1input();
+    render();
+
+}
+
+animate();
+
+
+
+
+
+
+
+
+function ballCollision(){
+   let topOfPaddle1 = player1.yPos;
+   let bottomOfPaddle1 = player1.yPos + player1.height;
+   let leftOfPaddle1 = player1.xPos;
+   let rightOfPaddle1 = player1.xPos + player1.width;
+
+   
+    if(rightOfPaddle1 === ball.xPos + ball.radius){
+       ball.dx = -ball.dx;
+   }
 }
 
 document.addEventListener('keydown', movePaddle);
-
-document.addEventListener('keydown', function(e){
-    keys[e.keycode] = true;
-    
-    e.preventDefault;
-})
-document.addEventListener('keyup', function(e){
-    delete keys[e.keycode];
-})
 
