@@ -138,7 +138,7 @@ function animate(){
         ball.dy = -ball.dy;
     }
 
-    //ballCollision();
+    ballCollision();
     
     ball.xPos += ball.dx;
     ball.yPos += ball.dy;
@@ -177,9 +177,8 @@ function ballCollision(){
    let ballRight = ball.xPos + ball.radius;
 
    //if there is a collison on any side of the paddle with the ball
-   let paddle1Collision = ballLeft < rightOfPaddle1 && ballBottom > topOfPaddle1 && ballRight > leftOfPaddle1 && ballTop < bottomOfPaddle1)
    
-    if(ballLeft < rightOfPaddle1 || ballRight > leftOfPaddle2){
+    if(ballLeft < rightOfPaddle1 || ballRight > leftOfPaddle2 ){
         ball.dx = -ball.dx;
    }
 }
