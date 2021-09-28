@@ -1,16 +1,19 @@
-##Game Title: 
+## Game Title: 
+
 Pong
 
-##Link:
+## Link:
 https://lrmoon.github.io/pong/
-##Screenshots:
+
+## Screenshots:
+
 ![Image of pong gameplay](https://i.imgur.com/p4mnxXS.jpg)
 
 
-##Technologies Used: 
+## Technologies Used: 
 
 JavaScript, HTML, CSS
 
-##Next Steps:
+## Next Steps:
 
 Create a 'party mode'. This mode will have the background alternating between different colors and have party music in the back. Everytime a player scores, there will be some sort of effect. Perhaps confetti.

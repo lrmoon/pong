@@ -126,6 +126,7 @@ function animate(){
     c.beginPath();
     c.arc(ball.xPos, ball.yPos,30, 0, Math.PI * 2,false);
     c.fillStyle = 'black';
+    c.fill();
     c.stroke();
 
    
@@ -137,7 +138,7 @@ function animate(){
         ball.dy = -ball.dy;
     }
 
-    ballCollision();
+    //ballCollision();
     
     ball.xPos += ball.dx;
     ball.yPos += ball.dy;
@@ -157,14 +158,29 @@ animate();
 
 
 function ballCollision(){
+   //grabbing all sides of the paddle for player1
    let topOfPaddle1 = player1.yPos;
    let bottomOfPaddle1 = player1.yPos + player1.height;
    let leftOfPaddle1 = player1.xPos;
-   let rightOfPaddle1 = player1.xPos + player1.width;
-
+   let rightOfPaddle1 = player1.xPos + player1.width/4;
    
-    if(rightOfPaddle1 === ball.xPos + ball.radius){
-       ball.dx = -ball.dx;
+   //grabbing all sides of the paddle for player2
+   let topOfPaddle2 = player2.yPos;
+   let bottomOfPaddle2 = player2.yPos + player2.height;
+   let leftOfPaddle2 = player2.xPos;
+   let rightOfPaddle2 = player2.xPos + player2.width/4;
+   
+   //grabbing all sides of the ball
+   let ballTop = ball.yPos - ball.radius;
+   let ballBottom = ball.yPos + ball.radius;
+   let ballLeft = ball.xPos - ball.radius;
+   let ballRight = ball.xPos + ball.radius;
+
+   //if there is a collison on any side of the paddle with the ball
+   let paddle1Collision = ballLeft < rightOfPaddle1 && ballBottom > topOfPaddle1 && ballRight > leftOfPaddle1 && ballTop < bottomOfPaddle1)
+   
+    if(ballLeft < rightOfPaddle1 || ballRight > leftOfPaddle2){
+        ball.dx = -ball.dx;
    }
 }
 
