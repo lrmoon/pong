@@ -1,4 +1,5 @@
 let canvas = document.querySelector('canvas');
+let audio = document.querySelector('audio');
 var c = canvas.getContext('2d');
 //draw items on screen
 let winner = false;
@@ -8,6 +9,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 document.addEventListener('keydown', movePaddle);
+
 
 const player1 = {
     xPos:"", //innerWidth/50,
@@ -159,6 +161,8 @@ function ballCollision(){
 
    //if there is a collison on any side of the paddle with the ball
     if((ballRight > leftOfPaddle1 && ballLeft < rightOfPaddle1  && ballBottom >topOfPaddle1 && ballTop < bottomOfPaddle1) ){
+        audio.volume = 0.5;
+        audio.play();
         let collidePoint1 = (ball.yPos - (player1.yPos + player1.height/2));
         
         collidePoint1 = collidePoint1 / (player1.height/2);
@@ -169,8 +173,11 @@ function ballCollision(){
         ball.dx = direction * 7 * Math.cos(angleRad);
         ball.dy = 7 * Math.sin(angleRad);
         ball.speed += 0.1;
+        
     }
     if( ballRight > leftOfPaddle2 && ballBottom >topOfPaddle2 && ballTop < bottomOfPaddle2 && ballLeft < rightOfPaddle2){
+        audio.volume = 0.5;
+        audio.play();
         let collidePoint2 = (ball.yPos - (player2.yPos + player2.height/2));
        
         collidePoint2 = collidePoint2 / (player1.height/2);
@@ -181,6 +188,7 @@ function ballCollision(){
         ball.dx = direction * 7 * Math.cos(angleRad);
         ball.dy = 7 * Math.sin(angleRad);
         ball.speed += 0.1;
+        audio.play();
     }
     
 }

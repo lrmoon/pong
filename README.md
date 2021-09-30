@@ -2,6 +2,16 @@
 
 Pong
 
+## Directions:
+
+Player 1 paddle controls:
+ W (up) 
+ S(down)
+
+Player 2 paddle controls:
+ArrowUp (up)
+ArrowDown (down)
+
 ## Link:
 https://lrmoon.github.io/pong/
 
