@@ -134,9 +134,9 @@ function animate(){
         victorySound.volume = 0.5;
         victorySound.play();
         if(player1.score === 3){
-            headerText = 'CONGRATULATIONS PLAYER 1! YOU HAVE WON!'
+            headerText = 'CONGRATULATIONS PLAYER 1! YOU HAVE WON!';
         }else if(player2.score === 3){
-            headerText = 'CONGRATULATIONS 2! YOU HAVE WON!';
+            headerText = 'CONGRATULATIONS PLAYER 2! YOU HAVE WON!';
         
         }
   }
@@ -161,8 +161,6 @@ function ballCollision(){
    let ballBottom = ball.yPos + ball.radius;
    let ballLeft = ball.xPos - ball.radius;
    let ballRight = ball.xPos + ball.radius;
-
-   let newRightOfPaddle1 = player1.yPos + player1.height
    
 
    //if there is a collison on any side of the paddle with the ball
