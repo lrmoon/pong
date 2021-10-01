@@ -2,6 +2,10 @@
 
 Pong
 
+## Description:
+
+This is a 2d ping pong game. I chose to make pong because I hate css.
+
 ## Directions:
 
 Player 1 paddle controls:
