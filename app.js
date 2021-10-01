@@ -176,8 +176,8 @@ function ballCollision(){
         let angleRad = (Math.PI/4) * collidePoint1;
         
         let direction = (ball.xPos + ball.radius < canvas.width/2) ? 1 : -1;
-        ball.dx = direction * 7 * Math.cos(angleRad);
-        ball.dy = 7 * Math.sin(angleRad);
+        ball.dx = direction * ball.speed * Math.cos(angleRad);
+        ball.dy = ball.speed * Math.sin(angleRad);
         ball.speed += 0.1;
         
     }
