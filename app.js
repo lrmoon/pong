@@ -9,22 +9,6 @@ let headerText = "";
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-var f = new FontFace('Press Start 2P', 'url(./font/PressStart2P.ttf)');
-
-f.load().then(function(font) {
-
-  // Ready to use the font in a canvas context
-  console.log('font ready');
-
-  // Add font on the html page
-  document.fonts.add(font);
-
-  c.font = '48px Press Start 2P';
-  c.strokeText('Hello world', 100, 100);
-
-});
-
-
 document.addEventListener('keydown', movePaddle);
 
 const player1 = {
@@ -82,11 +66,11 @@ function render(){
     c.fillRect(player1.xPos,player1.yPos,player1.width,player1.height);
     c.fillRect(player2.xPos,player2.yPos,player2.width,player2.height);
 
-    c.font = 'bold 50px Helvetica';
+    c.font = 'bold 50px Arial';
     c.fillStyle = "white"
     c.fillText(`Score: ${player1.score}`  , 50, 100);
     c.fillText(`Score: ${player2.score}`, innerWidth - 250, 100);
-    c.fillText(headerText, innerWidth/4 - 200, 300);
+    c.fillText(headerText, innerWidth/4 - 180, 300);
 }
 
 function movePaddle(e){

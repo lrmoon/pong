@@ -2,7 +2,6 @@ canvas{
     border: 1px solid black;
     resize: both;
     overflow: auto;
-    font-family: 'Press Start 2P', 'Arial';
     background-color: black;
 }
 
