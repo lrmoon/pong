@@ -1,18 +1,13 @@
 const canvas = document.querySelector('canvas');
 const pongHitSound = document.querySelector('#ponghit');
 const victorySound = document.querySelector('#victory');
-const coinSound = document.querySelector('#coinping');
-const img = document.querySelector('#scream');
+
 var c = canvas.getContext('2d');
 let winner = false;
 let headerText = "";
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
-
-
-
     
 
 document.addEventListener('keydown', movePaddle);
@@ -69,7 +64,7 @@ function initialize(){
 }
 
 function render(){
-    c.drawImage(img,0,0,innerWidth,innerHeight);
+    
     c.fillRect(player1.xPos,player1.yPos,player1.width,player1.height);
     c.fillRect(player2.xPos,player2.yPos,player2.width,player2.height);
 
@@ -142,9 +137,9 @@ function animate(){
         victorySound.volume = 0.5;
         victorySound.play();
         if(player1.score === 3){
-            headerText = 'CONGRATULATIONS DUMB BITCH!';
+            headerText = 'CONGRATULATIONS PLAYER 1! YOU HAVE WON!';
         }else if(player2.score === 3){
-            headerText = 'CONGRATULATIONS DUMB BITCH!';
+            headerText = 'CONGRATULATIONS PLAYER 2! YOU HAVE WON!';
         
         }
   }
