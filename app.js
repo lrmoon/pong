@@ -1,14 +1,18 @@
-let canvas = document.querySelector('canvas');
-let audio = document.querySelector('audio');
+const canvas = document.querySelector('canvas');
+const pongHitSound = document.querySelector('#ponghit');
+const victorySound = document.querySelector('#victory');
+const coinSound = document.querySelector('#coinping');
 var c = canvas.getContext('2d');
-//draw items on screen
 let winner = false;
 let headerText = "";
+
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+
 document.addEventListener('keydown', movePaddle);
+
 
 
 const player1 = {
@@ -66,10 +70,11 @@ function render(){
     c.fillRect(player1.xPos,player1.yPos,player1.width,player1.height);
     c.fillRect(player2.xPos,player2.yPos,player2.width,player2.height);
 
-    c.font = '30px Stencil Std';
-    c.fillText(`Score: ${player1.score}`  , 50, 30);
-    c.fillText(`Score: ${player2.score}`, 1390, 30);
-    c.fillText(headerText, innerWidth/4 -50, 100);
+    c.font = 'bold 50px Helvetica';
+    c.strokeStyle = "black"
+    c.fillText(`Score: ${player1.score}`  , 50, 100);
+    c.fillText(`Score: ${player2.score}`, innerWidth - 250, 100);
+    c.fillText(headerText, innerWidth/4 - 200, 300);
 }
 
 function movePaddle(e){
@@ -118,8 +123,10 @@ function animate(){
         }
         
         if(ball.yPos + ball.radius > innerHeight  || ball.yPos - ball.radius < 0){
-            
+            pongHitSound.play();
+            pongHitSound.volume = 0.5;
             ball.dy = -ball.dy;
+            ball.speed += 0.1;
         }
 
         ballCollision();
@@ -127,10 +134,13 @@ function animate(){
         ball.xPos += ball.dx;
         ball.yPos += ball.dy;
     }else if (winner === true){
+        party.confetti(canvas);
+        victorySound.volume = 0.5;
+        victorySound.play();
         if(player1.score === 3){
-            headerText = 'Congrats Player 1! You have won the game of pong!'
+            headerText = 'CONGRATULATIONS PLAYER 1! YOU HAVE WON!'
         }else if(player2.score === 3){
-            headerText = 'Congrats Player 2! You have won the game of pong!';
+            headerText = 'CONGRATULATIONS 2! YOU HAVE WON!';
         
         }
   }
@@ -161,8 +171,8 @@ function ballCollision(){
 
    //if there is a collison on any side of the paddle with the ball
     if((ballRight > leftOfPaddle1 && ballLeft < rightOfPaddle1  && ballBottom >topOfPaddle1 && ballTop < bottomOfPaddle1) ){
-        audio.volume = 0.5;
-        audio.play();
+        pongHitSound.play();
+        pongHitSound.volume = 0.5;
         let collidePoint1 = (ball.yPos - (player1.yPos + player1.height/2));
         
         collidePoint1 = collidePoint1 / (player1.height/2);
@@ -176,8 +186,8 @@ function ballCollision(){
         
     }
     if( ballRight > leftOfPaddle2 && ballBottom >topOfPaddle2 && ballTop < bottomOfPaddle2 && ballLeft < rightOfPaddle2){
-        audio.volume = 0.5;
-        audio.play();
+        pongHitSound.play();
+        pongHitSound.volume = 0.5;
         let collidePoint2 = (ball.yPos - (player2.yPos + player2.height/2));
        
         collidePoint2 = collidePoint2 / (player1.height/2);
@@ -188,7 +198,7 @@ function ballCollision(){
         ball.dx = direction * 7 * Math.cos(angleRad);
         ball.dy = 7 * Math.sin(angleRad);
         ball.speed += 0.1;
-        audio.play();
+        
     }
     
 }
