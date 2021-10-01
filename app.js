@@ -6,14 +6,10 @@ var c = canvas.getContext('2d');
 let winner = false;
 let headerText = "";
 
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
 document.addEventListener('keydown', movePaddle);
-
-
 
 const player1 = {
     xPos:"", //innerWidth/50,
@@ -45,7 +41,7 @@ const ball = {
 initialize();
 animate();
 function initialize(){
-    player1.xPos = 50;
+    player1.xPos = 35;
     player1.yPos = 390;
     player1.height = 130;
     player1.width = 35;
@@ -195,8 +191,8 @@ function ballCollision(){
         let angleRad = (Math.PI/4) * collidePoint2;
         
         let direction = (ball.xPos + ball.radius < canvas.width/2) ? 1 : -1;
-        ball.dx = direction * 7 * Math.cos(angleRad);
-        ball.dy = 7 * Math.sin(angleRad);
+        ball.dx = direction * ball.speed * Math.cos(angleRad);
+        ball.dy = ball.speed * Math.sin(angleRad);
         ball.speed += 0.1;
         
     }
