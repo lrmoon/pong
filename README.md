@@ -21,7 +21,7 @@ https://lrmoon.github.io/pong/
 
 ## Screenshots:
 
-![Image of pong gameplay](https://i.imgur.com/p4mnxXS.jpg)
+![Image of pong gameplay](https://i.imgur.com/6hl1FXZ.jpg)
 
 
 ## Technologies Used: 
