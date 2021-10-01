@@ -3,6 +3,7 @@ canvas{
     resize: both;
     overflow: auto;
     font-family: 'Press Start 2P', 'Arial';
+    background-color: black;
 }
 
 body{

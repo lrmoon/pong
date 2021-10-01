@@ -9,6 +9,22 @@ let headerText = "";
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+var f = new FontFace('Press Start 2P', 'url(./font/PressStart2P.ttf)');
+
+f.load().then(function(font) {
+
+  // Ready to use the font in a canvas context
+  console.log('font ready');
+
+  // Add font on the html page
+  document.fonts.add(font);
+
+  c.font = '48px Press Start 2P';
+  c.strokeText('Hello world', 100, 100);
+
+});
+
+
 document.addEventListener('keydown', movePaddle);
 
 const player1 = {
@@ -55,7 +71,7 @@ function initialize(){
 
     ball.xPos = innerWidth/2;
     ball.yPos = innerHeight/2;
-    ball.radius = 30;
+    ball.radius = 20;
     ball.color = 'black';
     ball.dx = Math.floor((Math.random() - 0.5 )* 25); //xvelocity
     ball.dy = Math.floor((Math.random() - 0.5 )* 25); //yVelocity
@@ -67,7 +83,7 @@ function render(){
     c.fillRect(player2.xPos,player2.yPos,player2.width,player2.height);
 
     c.font = 'bold 50px Helvetica';
-    c.strokeStyle = "black"
+    c.fillStyle = "white"
     c.fillText(`Score: ${player1.score}`  , 50, 100);
     c.fillText(`Score: ${player2.score}`, innerWidth - 250, 100);
     c.fillText(headerText, innerWidth/4 - 200, 300);
@@ -101,8 +117,8 @@ function animate(){
     render();
 
     c.beginPath();
-    c.arc(ball.xPos, ball.yPos,30, 0, Math.PI * 2,false);
-    c.fillStyle = 'black';
+    c.arc(ball.xPos, ball.yPos,ball.radius, 0, Math.PI * 2,false);
+    c.fillStyle = 'white';
     c.fill();
     c.stroke();
 
